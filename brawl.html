@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .registration-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .registration-container h2 {
+            margin-bottom: 20px;
+        }
+        .registration-container input[type="email"],
+        .registration-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .registration-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .registration-container button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="registration-container" id="registrationContainer">
+    <h2>Здравствуй</h2>
+    <form id="registrationForm">
+        <input type="email" id="email" placeholder="Введите ваш email" required>
+        <input type="password" id="password" placeholder="Введите пароль" required>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+</div>
+
+<div class="message" id="successMessage" style="display:none;"></div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем отправку формы
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+            // Скрываем форму
+            document.getElementById('registrationContainer').style.display = 'none';
+            
+            // Отображаем сообщение об успехе
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = Вы зарегистрированы с email: ${email};
+            successMessage.style.display = 'block';
+        } else {
+            alert('Пожалуйста, заполните все поля.');
+        }
+    });
+</script>
+
+</body>
+</html>
